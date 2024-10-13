@@ -45,7 +45,10 @@
         {#if savedInput}
           <div class="border rounded p-2 h-full">
             <p class="font-semibold">You entered:</p>
-            <p class="mt-1 bg-gray-100 rounded p-2">{savedInput}</p>
+            <textarea
+              class="border rounded px-2 py-1 w-full h-32 resize-none mb-2 overflow-y-auto"
+              readonly>{savedInput}</textarea
+            >
           </div>
         {/if}
       </div>
