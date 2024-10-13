@@ -1,2 +1,2 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>Cerebral Hacks Trailer Generator</h1>
+<p>2024 Adrian Vazquez, Kyle Ho, and Daniel Rubio</p>
