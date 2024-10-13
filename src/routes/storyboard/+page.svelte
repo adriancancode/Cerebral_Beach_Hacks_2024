@@ -39,4 +39,4 @@
   {/each}
 </div>
 
-<!-- <button class="" on:click={}>Generate a Trailer</button> -->
+<button class="" on:click={getData}>Generate a Trailer</button>

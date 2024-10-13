@@ -1,4 +1,5 @@
 import { OPEN_AI_KEY } from '$env/static/private';
+import { TWELVE_LABS_API } from '$env/static/private';
 
 export async function POST({ request }) {
   const { prompt } = await request.json();
@@ -32,3 +33,31 @@ export async function POST({ request }) {
     });
   }
 }
+
+const fetch = require('node-fetch');
+
+const url = 'https://api.twelvelabs.io/v1.2/indexes';
+const options = {
+  method: 'POST',
+  headers: {
+    accept: 'application/json',
+    'x-api-key': TWELVE_LABS_API,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    index_name: 'cerebralHacks',
+    engines: [
+      {
+        engine_name: 'marengo2.6',
+        engine_options: ['visual', 'conversation', 'text_in_video', 'logo'],
+        addons: ['thumbnail']
+      },
+      {engine_name: 'pagasus1.0', engine_options: ['visual', 'conversation']}
+    ]
+  })
+};
+
+fetch(url, options)
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('error:' + err));
