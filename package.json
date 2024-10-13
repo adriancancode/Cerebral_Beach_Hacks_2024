@@ -25,6 +25,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"openai": "^4.67.3"
+		"dotenv": "^16.4.5",
+		"openai": "^4.67.3",
+		"twelvelabs-js": "^0.2.6"
 	}
 }

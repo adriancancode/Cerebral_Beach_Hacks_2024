@@ -13,11 +13,27 @@
     onAddCard();
   }
 
-  function generateImage() {
-    // For now, just set a placeholder image URL
-    imageUrl = "https://via.placeholder.com/300x200";
+  async function generateImage() {
     isImageGenerated = true;
-    savedInput = inputValue.trim(); // Save the current input
+    try {
+      const response = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          prompt: inputValue
+        })
+      });
+      
+
+      const data = await response.json();
+      imageUrl = data.imageUrl;
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      isImageGenerated = false;
+    }
   }
 
   $: isInputEmpty = !inputValue.trim();
