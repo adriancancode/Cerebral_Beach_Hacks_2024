@@ -1,37 +1,43 @@
 <script lang="ts">
   export let title: string;
   export let imageUrl: string;
-  export let onAddCard: () => void;
+  export let onAddCard: (imageUrl: string, description: string) => void;
   export let isLastCard: boolean;
+  export let previousImageDescription: string = "";
 
   let inputValue = "";
   let savedInput = "";
-  let savedImageUrl = ""; // New variable to store the generated image URL
+  let savedImageUrl = "";
   let isImageGenerated = false;
+  let imageDescription = "";
 
   function handleAddCard() {
     console.log("Add card button clicked"); // Debug log
-    savedInput = inputValue; // Save the current input
-    savedImageUrl = imageUrl; // Save the current image URL
-    onAddCard();
+    savedInput = inputValue;
+    savedImageUrl = imageUrl;
+    onAddCard(savedImageUrl, imageDescription);
   }
 
   async function generateImage() {
     isImageGenerated = true;
     try {
+      const basePrompt = `Generate a single high-quality storyboard style image using this script: ${inputValue}. The image should depict a single scene or moment, not a grid or multiple images.`;
+      const fullPrompt = previousImageDescription
+        ? `${basePrompt} Maintain consistency with the previous image, which was described as: ${previousImageDescription}. Ensure the style, color palette, and overall aesthetic are similar.`
+        : basePrompt;
+
       const response = await fetch("/api/generate-image", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          prompt: `Generate me a high quality storyboard style image using this script: ${inputValue}`,
-        }),
+        body: JSON.stringify({ prompt: fullPrompt }),
       });
 
       const data = await response.json();
       imageUrl = data.imageUrl;
-      savedImageUrl = imageUrl; // Save the generated image URL
+      savedImageUrl = imageUrl;
+      imageDescription = data.description || inputValue;
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -40,7 +46,7 @@
   }
 
   $: isInputEmpty = !inputValue.trim();
-  $: isAddButtonDisabled = isInputEmpty || !savedImageUrl; // Use savedImageUrl instead of imageUrl
+  $: isAddButtonDisabled = isInputEmpty || !savedImageUrl;
   $: isGenerateButtonDisabled = isInputEmpty;
 </script>
 
@@ -78,7 +84,7 @@
       disabled={isGenerateButtonDisabled}
       class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      {isImageGenerated ? "Generate New Image" : "Generate Image"}
+      {"Generate Image"}
     </button>
   </div>
 
