@@ -1,5 +1,6 @@
 <script lang="ts">
   import Start from "$lib/components/Start.svelte";
+  import SourceCode from "$lib/components/SourceCode.svelte";
 </script>
 
 <div class="min-h-screen flex flex-col">
@@ -17,6 +18,7 @@
       </section>
     </div>
   </main>
+  <SourceCode />
 
   <footer class="py-4">
     <p class="text-center text-sm">
