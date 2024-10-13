@@ -6,38 +6,41 @@
 
   let inputValue = "";
   let savedInput = "";
+  let savedImageUrl = ""; // New variable to store the generated image URL
   let isImageGenerated = false;
 
   function handleAddCard() {
     console.log("Add card button clicked"); // Debug log
+    savedInput = inputValue; // Save the current input
+    savedImageUrl = imageUrl; // Save the current image URL
     onAddCard();
   }
 
   async function generateImage() {
     isImageGenerated = true;
     try {
-      const response = await fetch('/api/generate-image', {
-        method: 'POST',
+      const response = await fetch("/api/generate-image", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: `Generate me a high quality storyboard style image using this script: ${inputValue}`
-        })
+          prompt: `Generate me a high quality storyboard style image using this script: ${inputValue}`,
+        }),
       });
-      
 
       const data = await response.json();
       imageUrl = data.imageUrl;
+      savedImageUrl = imageUrl; // Save the generated image URL
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     } finally {
       isImageGenerated = false;
     }
   }
 
   $: isInputEmpty = !inputValue.trim();
-  $: isAddButtonDisabled = isInputEmpty || !imageUrl;
+  $: isAddButtonDisabled = isInputEmpty || !savedImageUrl; // Use savedImageUrl instead of imageUrl
   $: isGenerateButtonDisabled = isInputEmpty;
 </script>
 
@@ -46,7 +49,7 @@
     <h2 class="text-xl font-bold mb-2">{title}</h2>
 
     <img
-      src={imageUrl || "https://via.placeholder.com/300x200?text=No+Image"}
+      src={savedImageUrl || "https://via.placeholder.com/300x200?text=No+Image"}
       alt={"Card image"}
       class="w-full h-48 object-cover mb-4 rounded"
     />
