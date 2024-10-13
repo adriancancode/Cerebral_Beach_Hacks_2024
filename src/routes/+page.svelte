@@ -7,7 +7,7 @@
   <main class="flex-grow flex items-center mx-auto p-4">
     <div class="flex flex-col md:flex-row gap-4 justify-center">
       <section class="w-full md:w-5/12 text-center">
-        <h1 class="text-6xl font-bold mb-6">Trailer GPT</h1>
+        <h1 class="text-6xl font-bold mb-6">FrightFrames</h1>
         <p class="text-xl">
           Generate a trailer for a horror movie based on your personal
           requirements using this AI-Powered Movie Trailer Generator

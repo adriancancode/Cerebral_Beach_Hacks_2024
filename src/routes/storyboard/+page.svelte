@@ -5,14 +5,17 @@
   import Card from "$lib/components/Card.svelte";
   import { writable } from "svelte/store";
 
-  const cards = writable([{ title: "Card 1", imageUrl: "" }]);
+  const cards = writable([{ title: "Card 1", imageUrl: "", description: "" }]);
+  let lastImageDescription = "";
 
-  function addCard() {
+  function addCard(imageUrl: string, description: string) {
+    lastImageDescription = description;
     cards.update((currentCards) => {
       console.log("Adding new card"); // Debug log
       const newCard = {
         title: `Card ${currentCards.length + 1}`,
         imageUrl: "",
+        description: "",
       };
       return [...currentCards, newCard];
     });
@@ -29,10 +32,11 @@
     <Card
       title={card.title}
       imageUrl={card.imageUrl}
-      onAddCard={addCard}
+      onAddCard={(imageUrl, description) => addCard(imageUrl, description)}
       isLastCard={index === $cards.length - 1}
+      previousImageDescription={index > 0 ? lastImageDescription : ""}
     />
   {/each}
 </div>
 
-<!-- <button class="" on:click={}>Generate a Trailer</button> -->
+<button class="" on:click={getData}>Generate a Trailer</button>

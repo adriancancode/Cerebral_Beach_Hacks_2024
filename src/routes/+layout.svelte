@@ -4,7 +4,7 @@
 
 <nav class="bg-stone-900 p-4">
   <div class="container mx-auto flex justify-between items-center">
-    <a href="/" class="text-white text-xl font-bold">Trailer GPT</a>
+    <a href="/" class="text-white text-xl font-bold">FrightFrames</a>
     <ul class="flex space-x-4 text-orange-500">
       <li><a href="/" class="hover:text-white">Home</a></li>
       <li>
