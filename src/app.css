@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:global(body){
+    background-image: url("/static/haunted_house.jpg");
+}
