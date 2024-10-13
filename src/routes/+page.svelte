@@ -2,12 +2,25 @@
   import Start from "$lib/components/Start.svelte";
 </script>
 
-<h1 class="text-9xl font-bold text-center mb-20 mt-20">Trailer GPT</h1>
-<p class="text-5xl text-center mb-96">Generate a trailer for a horror movie based on your personal requirements using this AI-Powered Movie Trailer Generator</p>
+<div class="min-h-screen flex flex-col">
+  <main class="flex-grow flex items-center mx-auto p-4">
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
+      <section class="w-full md:w-5/12 text-center">
+        <h1 class="text-6xl font-bold mb-6">Trailer GPT</h1>
+        <p class="text-xl">
+          Generate a trailer for a horror movie based on your personal
+          requirements using this AI-Powered Movie Trailer Generator
+        </p>
+      </section>
+      <section class="flex items-center justify-center">
+        <Start />
+      </section>
+    </div>
+  </main>
 
-<div class="flex items-center justify-center">
-  <Start/>
-
+  <footer class="py-4">
+    <p class="text-center text-sm">
+      2024 Adrian Vazquez, Kyle Ho, and Daniel Rubio
+    </p>
+  </footer>
 </div>
-
-<p class="text-center mt-96">2024 Adrian Vazquez, Kyle Ho, and Daniel Rubio</p>
