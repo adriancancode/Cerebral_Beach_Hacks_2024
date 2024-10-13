@@ -1,1 +1,0 @@
-<div class="size-1024px shadow-xl rounded-lg"></div>
