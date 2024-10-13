@@ -22,7 +22,7 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          prompt: inputValue
+          prompt: `Generate me a high quality storyboard style image using this script: ${inputValue}`
         })
       });
       

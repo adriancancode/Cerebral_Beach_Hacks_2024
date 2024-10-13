@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { TwelveLabs, SearchData, Task } from 'twelvelabs-js';
-    import { promises as fsPromises } from 'fs';
-    import * as path from 'path';
+    // import { TwelveLabs, SearchData, Task } from 'twelvelabs-js';
+    // import { promises as fsPromises } from 'fs';
+    // import * as path from 'path';
   import Card from "$lib/components/Card.svelte";
   import { writable } from "svelte/store";
 
@@ -35,4 +35,4 @@
   {/each}
 </div>
 
-<button class="" on:click={}>Generate a Trailer</button>
+<!-- <button class="" on:click={}>Generate a Trailer</button> -->
