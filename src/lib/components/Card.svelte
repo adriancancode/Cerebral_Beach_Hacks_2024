@@ -81,7 +81,7 @@
 
     <button
       on:click={generateImage}
-      disabled={isGenerateButtonDisabled || isLoading}
+      disabled={isLoading}
       class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full mt-4 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
     >
       {#if isLoading}
