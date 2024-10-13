@@ -1,18 +1,13 @@
 <script lang="ts">
-  import Card from "$lib/components/Card.svelte";
+  import Start from "$lib/components/Start.svelte";
 </script>
 
-<h1 class="text-3xl font-bold mb-4">Cerebral Hacks Trailer Generator</h1>
-<p class="mb-4">
-  Visit <a href="https://kit.svelte.dev" class="text-blue-500 hover:underline"
-    >kit.svelte.dev</a
-  > to read the documentation
-</p>
+<h1 class="text-9xl font-bold text-center mb-20 mt-20">Trailer GPT</h1>
+<p class="text-5xl text-center mb-96">Generate a trailer for a horror movie based on your personal requirements using this AI-Powered Movie Trailer Generator</p>
 
-<div>
-  <Card
-    title="Example Card"
-    content="This is an example of a card component in Svelte."
-  />
+<div class="flex items-center justify-center">
+  <Start/>
+
 </div>
-<p>2024 Adrian Vazquez, Kyle Ho, and Daniel Rubio</p>
+
+<p class="text-center mt-96">2024 Adrian Vazquez, Kyle Ho, and Daniel Rubio</p>
